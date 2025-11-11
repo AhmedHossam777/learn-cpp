@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1762073532 source:/home/aldod/Documents/learn-cpp/firrsssttt/main.cpp
+	<iostream>
+
+1762073666 source:/home/aldod/Documents/learn-cpp/firrsssttt/test.cpp
+	<iostream>
+
