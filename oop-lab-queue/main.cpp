@@ -1,120 +1,105 @@
-#include <iostream>
 using namespace std;
+#include <iostream>
 
-// class Queue {
-// private:
-//     int size;
-//     int head;
-//     int tail;
-//     int *arr;
-//
-// public:
-//     Queue(int _size) {
-//         head = 0;
-//         tail = 0;
-//         this->size = _size;
-//         arr = new int[size];
-//     }
-//
-//     void enqueue(int value) {
-//         arr[tail] = value;
-//         tail++;
-//     }
-//
-//     int dequeue() {
-//         int value = arr[head];
-//
-//         for (int i = head; i < tail-1; ++i) {
-//             arr[i] = arr[i + 1];
-//         }
-//
-//         tail--;
-//
-//         return value;
-//     }
-//
-//
-//     void print() {
-//         for (int i = 0; i < tail; ++i) {
-//             cout << arr[i] << ",";
-//         }
-//         cout << endl;
-//     }
-//
-//     ~Queue() {
-//         delete [] arr;
-//     }
-// };
-
-
-class Queue {
+class CQueue {
 private:
+    int front;
+    int rear;
     int size;
-    int head;
-    int tail;
     int *arr;
 
 public:
-    Queue(int _size) {
-        head = 0;
-        tail = 0;
-        this->size = _size;
+    CQueue() {
+        front = rear = -1;
+        size = 5;
         arr = new int[size];
+
+        cout << "Default ctor" << endl;
     }
 
-    void enqueue(int value) {
-        arr[tail] = value;
-        if () {
+    CQueue(int _size) {
+        front = rear = -1;
+        size = _size;
+        arr = new int[size];
 
+        cout << "Parameterized ctor" << endl;
+    }
+
+    ~CQueue() {
+        cout << "Dest has been called" << endl;
+    }
+
+    void Enqueue(int value) {
+        if (!isFull()) {
+            if (front == -1) {
+                front = 0;
+            }
+
+            rear = (rear + 1) % size;
+            arr[rear] = value;
+        } else {
+            cout << "The Queue is full" << endl;
         }
-        tail++;
     }
 
-    int dequeue() {
-        int temp = arr[head];
-        arr[head] = -1;
-        return temp;
-    }
-
-
-    void print() {
-        for (int i = 0; i < tail; ++i) {
-            cout << arr[i] << ",";
+    int Dequeue() {
+        if (isEmpty()) {
+            cout << "The stack is empty!" << endl;
+            return -1;
         }
-        cout << endl;
+
+        int result = arr[0];
+        if (front == rear) {
+            front = rear = -1;
+        } else {
+            front = (front + 1) % size;
+        }
+
+        return result;
     }
 
-    ~Queue() {
-        delete [] arr;
+    bool isFull() {
+        return (front == 0 && rear == size - 1) || (rear + 1 == front);
     }
+
+    bool isEmpty() {
+        return (front == -1);
+    }
+
+    friend void ViewCQueue(CQueue &param);
 };
 
+
+void ViewCQueue(CQueue &param) {
+    if (param.isEmpty()) {
+        cout << "Queue is empty!" << endl;
+        return;
+    }
+
+    int i = param.front;
+    while (true) {
+        cout << param.arr[i];
+        if (i == param.rear)
+            break;
+        cout << " ";
+        i = (i + 1) % param.size;
+    }
+
+    cout << endl;
+}
+
 int main() {
-    Queue q1(5);
+    CQueue q1(10);
 
-    // q1.enqueue(5);
-    // q1.enqueue(7);
-    // q1.enqueue(2);
-    // q1.enqueue(2);
-    // q1.enqueue(2);
-    //
-    // q1.print();
-    // cout << endl;
-    // q1.dequeue();
-
-    q1.enqueue(1);
-    q1.enqueue(2);
-    q1.enqueue(3);
-    q1.enqueue(4);
-    q1.enqueue(5);
-
-    q1.print();
-
-    cout << q1.dequeue() << endl;
-    cout << q1.dequeue() << endl;
-    cout << q1.dequeue() << endl;
-    q1.print();
+    for (int i = 1; i <= 10; i++) {
+        q1.Enqueue(i);
+    }
 
 
+    cout << q1.Dequeue() << endl;
+
+    q1.Enqueue(11);
+
+    ViewCQueue(q1);
     return 0;
 }
