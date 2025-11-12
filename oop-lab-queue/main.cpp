@@ -1,6 +1,88 @@
 using namespace std;
 #include <iostream>
 
+class SQueue {
+private:
+    int rear;
+    int size;
+    int *arr;
+
+public:
+    SQueue() {
+        rear = 0;
+        size = 5;
+        arr = new int[size];
+
+        cout << "Default ctor" << endl;
+    }
+
+    SQueue(int _size) {
+        rear = 0;
+        size = _size;
+        arr = new int[size];
+        cout << "paramterized ctor" << endl;
+    }
+
+    ~SQueue() {
+        cout << "dest has been called" << endl;
+    }
+
+    void Enqueue(int value) {
+        if (rear < size) {
+            arr[rear] = value;
+            rear++;
+        } else {
+            cout << "The queue is full" << endl;
+        }
+    }
+
+    int Dequeue() {
+        if (rear == 0) {
+            cout << "The queue is empty!" << endl;
+            return -1;
+        }
+
+        int result = arr[0];
+
+        for (int i = 0; i < rear - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+
+        rear--;
+        arr[rear] = 0;
+
+        return result;
+    }
+
+
+    friend void ViewSQueue(SQueue param);
+};
+
+void ViewSQueue(SQueue param) {
+    for (int i = 0; i < param.rear; i++) {
+        cout << param.arr[i] << " ";
+    }
+    cout << endl;
+}
+
+
+int main() {
+    SQueue q1(10);
+
+    for (int i = 1; i <= 10; i++) {
+        q1.Enqueue(i);
+    }
+
+    cout << q1.Dequeue() << endl;
+    cout << q1.Dequeue() << endl;
+    cout << q1.Dequeue() << endl;
+
+    ViewSQueue(q1);
+
+    return 0;
+}
+
+
 class CQueue {
 private:
     int front;
@@ -88,18 +170,18 @@ void ViewCQueue(CQueue &param) {
     cout << endl;
 }
 
-int main() {
-    CQueue q1(10);
-
-    for (int i = 1; i <= 10; i++) {
-        q1.Enqueue(i);
-    }
-
-
-    cout << q1.Dequeue() << endl;
-
-    q1.Enqueue(11);
-
-    ViewCQueue(q1);
-    return 0;
-}
+// int main(){
+//     CQueue q1(10);
+//
+//     for(int i = 1; i <= 10; i++){
+//         q1.Enqueue(i);
+//     }
+//
+//
+//     cout << q1.Dequeue() << endl;
+//
+//     q1.Enqueue(11);
+//
+//     ViewCQueue(q1);
+//     return 0;
+// }
