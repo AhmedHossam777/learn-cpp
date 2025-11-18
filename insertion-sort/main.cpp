@@ -2,17 +2,18 @@
 using namespace std;
 
 void insertion(int arr[], int size) {
-    int lastIxd;
-    for (int i = 0; i <= size-1; ++i) {
-        lastIxd = i + 1;
-        while (lastIxd > 0) {
-            if (arr[lastIxd] < arr[lastIxd - 1]) {
-                swap(arr[lastIxd], arr[lastIxd - 1]);
-            }
-            lastIxd--;
+    for (int i = 1; i < size; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
         }
+        arr[j + 1] = key;
     }
 }
+
 
 int main() {
 
