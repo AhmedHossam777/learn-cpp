@@ -29,7 +29,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a51e07e5-6876-4969-bfd2-7f40b187726d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../oop-lab-stack/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../oop-lab-stack/.idea/vcs.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +90,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "com.github.lauvsong.langcursor.settings.AppSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -112,7 +111,8 @@
       <workItem from="1763461687092" duration="26000" />
       <workItem from="1763464712044" duration="184000" />
       <workItem from="1763465495790" duration="3300000" />
-      <workItem from="1763469692944" duration="245000" />
+      <workItem from="1763469692944" duration="2021000" />
+      <workItem from="1763538730277" duration="69000" />
     </task>
     <servers />
   </component>
