@@ -5,9 +5,11 @@ using namespace std;
 
 class Solution {
 public:
-    int maxOperations(vector<int> &nums, int k) {
-        for (const int &i: nums) {
-            cout << i << "  ";
+    int maxOperations(vector<int> nums, int k) {
+        int left = 0;
+        int right = 0;
+        while (left!=right) {
+
         }
     }
 };
